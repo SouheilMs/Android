@@ -84,8 +84,15 @@ public class TripAdapter extends RecyclerView.Adapter<TripAdapter.TripViewHolder
             tvDepart.setText(trip.getDepart());
             tvDestination.setText(trip.getDestination());
             tvDate.setText("Date : " + trip.getDate());
-            tvPlaces.setText("Places : " + trip.getPlaces());
-            tvPrix.setText(String.format(Locale.getDefault(), "%.2f DH", trip.getPrix()));
+            if (trip.getAvailablePlaces() == 0) {
+                tvPlaces.setText(itemView.getContext().getString(R.string.trip_complete));
+            } else {
+                tvPlaces.setText(itemView.getContext().getString(
+                        R.string.item_places_available,
+                        trip.getAvailablePlaces(),
+                        trip.getTotalPlaces()));
+            }
+            tvPrix.setText(String.format(Locale.getDefault(), "%.2f TND", trip.getPrix()));
             tvBadge.setText(trip.getUserType());
 
             itemView.setOnClickListener(v -> listener.onTripClick(trip));
