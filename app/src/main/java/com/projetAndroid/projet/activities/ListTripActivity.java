@@ -55,6 +55,7 @@ public class ListTripActivity extends AppCompatActivity implements TripAdapter.O
             getSupportActionBar().setTitle(ownerOnly
                     ? getString(R.string.my_trips_title)
                     : getString(R.string.list_trips_title));
+
         }
 
         etSearch          = findViewById(R.id.etSearchTrips);
